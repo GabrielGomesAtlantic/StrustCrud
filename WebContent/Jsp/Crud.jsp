@@ -9,29 +9,22 @@
 <head>
 	<!--<meta charset="ISO-8859-1">-->
 	<title>CRUD</title>
-	<link rel="stylesheet" type="text/css" href="Jsp/css/Crud.css">
-	<script type="text/javascript" src="Jsp/Js/Crud.js"></script>
+	<link rel="stylesheet" type="text/css" href="Jsp/css/crud.css">
+	<script type="text/javascript" src="Jsp/Js/crud.js"></script>
 </head>
 <body>
 	<div class="Container">
 		<form action="/Crud/Crud.do" method="POST">
 			<input type="hidden" name="acao" value=""/>
-			<input type="hidden" name="valor" value=""/>
+			<input type="hidden" name="id" value=""/>
 			CADASTRE SEU PERSONAGEM<br><br>
 			<label>Nickname: </label>
-			<input type="text" name="nickName" size="70" maxlength="60" placeholder=" Insira seu nick! "/><br><br>
+			<input type="text" name="nickName" id="nickName" OnKeyPress="mascaraNome(event);" size="70" maxlength="60" placeholder=" Insira seu nick! "/><br><br>
 			<label>Level: </label>
 			<select name="level">
-			  <option value="1-10">1-10</option>
-			  <option value="11-20">11-20</option>
-			  <option value="21-30">21-30</option>
-			  <option value="31-40">31-40</option>
-			  <option value="41-50">41-50</option>
-			  <option value="51-60">51-60</option>
-			  <option value="61-70">61-70</option>
-			  <option value="71-80">71-80</option>
-			  <option value="81-90">81-90</option>
-			  <option value="91-99">91-99</option>
+				<logic:iterate id="objeto" scope="request" name="listaLevel">
+					  <option value="${objeto}">${objeto}</option>
+				</logic:iterate>
 			</select>
 			<br><br>
 			<label>Sexo: </label>
@@ -40,7 +33,7 @@
 			<input type="radio" name="sexo" value="O"/>Outro
 			<br><br>
 			<label>Data de criação da conta: </label>
-			<input type="text" name="datCria" size="10" maxlength="10" placeholder=" DD/MM/YYYY "/>
+			<input type="text" id="data" class="" name="datCria" size="10" maxlength="10" OnKeyDown="mascaraData();" placeholder=" DD/MM/YYYY "/>
 			<br><br>
 			
 			
@@ -56,7 +49,7 @@
 			<textarea name="observacoes" max-size="70" maxlength="280" placeholder=" Insira sua observacao! "></textarea><br><br>
 			<input type="submit" id="gravar" value="Gravar"  onclick="guardar();">
 			<input type="submit" value="Limpar"  onclick="limpar();">
-			<input type="button" id="editar" value="Editar"  onclick="reescrever();" disabled>
+			<input type="button" id="editar" value="Editar"  onclick="formatar();" disabled>
 		</form><br><br> 
 		<label>USUARIOS CADASTRADOS</label><br>
 		<table>

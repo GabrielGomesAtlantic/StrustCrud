@@ -1,4 +1,4 @@
-package com.crud.vo;
+package com.crud.model.vo;
 
 public class PersonagemVO {
 	

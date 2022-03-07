@@ -8,7 +8,6 @@ function guardar(){
 		acao.value="GRAVAR";
 		if(document.getElementById("armasMetralhadora").checked == true){
 			arma1 = "Metralhadora ";
-			
 		}
 		if(document.getElementById("armasShotgun").checked == true){
 			arma2 = "/ Shotgun ";
@@ -28,14 +27,13 @@ function limpar(){
 	with(document.forms[0]){
 		acao.value="LIMPAR";
 		location.reload();
-		submit();
 	}
 }
 
 function deletar(objeto){
 	with(document.forms[0]){
 		acao.value="EXCLUIR";
-		valor.value = objeto;
+		id.value = objeto;
 		submit();
 	}
 }
@@ -45,39 +43,28 @@ function preencheCampos(objeto){
 		acao.value        = "EDITAR";
 		for(i=0; objeto >= i; i++){
 			if(i == objeto){
-				valor.value       = objeto ;
+				id.value       = objeto ;
 				nickName.value    = document.getElementById("nickname"+objeto).textContent;
 				level.value       = document.getElementById("level"+objeto).textContent;
 				console.log(level.value)
 				sexo.value        = document.getElementById("sexo"+objeto).textContent;
 				datCria.value     = document.getElementById("datCria"+objeto).textContent;
 				observacoes.value = document.getElementById("observacoes"+objeto).textContent;
-				
-				
 				var arma = document.getElementById("armas"+objeto).textContent;
-				
-				
 				console.log(document.getElementById("armas"+objeto).textContent);
-				
-				
 				if(arma.includes('Metralhadora')){
 					document.getElementById("armasMetralhadora").checked = true;
 				}
-				
 				if(arma.includes('Shotgun')){
 					document.getElementById("armasShotgun").checked = true;
 				}
-				
 				if(arma.includes('Pistola')){
 					document.getElementById("armasPistola").checked = true;
 				} 
-				
 				if(arma.includes('AWP')){
 					document.getElementById("armasAWP").checked = true;
 				}
-				
 				arma = '';
-				
 				document.getElementById('editar').disabled = false;
 				document.getElementById('gravar').disabled = true;
 			}
@@ -85,7 +72,7 @@ function preencheCampos(objeto){
 	}	
 }
 
-function reescrever(){
+function formatar(){
 	with(document.forms[0]){
 		let str = '';
 		let arma1 = '';
@@ -95,7 +82,6 @@ function reescrever(){
 		acao.value  = "EDITAR";
 		if(document.getElementById("armasMetralhadora").checked == true){
 			arma1 = "Metralhadora ";
-			
 		}
 		if(document.getElementById("armasShotgun").checked == true){
 			arma2 = "/ Shotgun ";
@@ -110,3 +96,29 @@ function reescrever(){
 		submit();
 	}
 }
+
+function mascaraData(){
+	var reg = new RegExp('^[0-9/]*$');
+	let barra = '/';
+	var data = document.getElementById("data").value;
+	if(data.length == 2 && reg.test(data) == true){
+		dataForm = data + barra;
+		document.getElementById("data").className = 'none';
+		with (document.forms[0]){
+			data.value = dataForm;
+		}
+		return true;
+	}
+	if(data.length == 5 && reg.test(data) == true){
+		dataForm = data + barra;
+		document.getElementById("data").className = 'none';
+		with (document.forms[0]){
+			data.value = dataForm;
+		}
+		return true;
+	}
+}
+
+
+
+
