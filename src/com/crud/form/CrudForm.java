@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.apache.struts.action.ActionForm;
 
-import com.crud.model.vo.PersonagemVO;
+import com.crud.vo.PersonagemVO;
 
 public class CrudForm extends ActionForm {
 	
@@ -16,15 +16,37 @@ public class CrudForm extends ActionForm {
 	private String sexo                            = "";
 	private String datCria                         = "";
 	private String armas                           = "";
+	private String primaria                        = "";
+	private String secundaria                      = "";
 	private String observacoes                     = "";
+	private int valor;
 	private int id;
 	private String acao                            = "";
 
+	
+	public String getSecundaria() {
+		return secundaria;
+	}
+	public void setSecundaria(String secundaria) {
+		this.secundaria = secundaria;
+	}
+	public int getValor() {
+		return valor;
+	}
+	public void setValor(int valor) {
+		this.valor = valor;
+	}
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public String getPrimaria() {
+		return primaria;
+	}
+	public void setPrimaria(String primaria) {
+		this.primaria = primaria;
 	}
 	public List<PersonagemVO> getListaPersonagens() {
 		return listaPersonagens;

@@ -14,12 +14,3 @@
 	width:70px;
 	border: 5px;
 }
-
-
-.vermelho{
-	box-shadow: 0 0 5px red;
-}
-
-.none{
-	box-shadow:none;
-}
